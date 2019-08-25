@@ -1,5 +1,5 @@
 {
-  "name": "mern-authenticator",
+  "name": "chart-analytics-and-mern-authenticator",
   "version": "1.0.0",
   "description": "An Oauth2.0 app for MERN ",
   "main": "server.js",
