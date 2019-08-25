@@ -65,20 +65,24 @@ router.route('/register')
         const details = req.body;
         User.findOne({email:details.email}).then((user)=> {
             if(user) {
-                res.status(400).json({message: "user already exist"});
-            }
-        })
-        const user =  new User (details);
-        bcrypt.genSalt(10, (err, salt)=> {
-            bcrypt.hash(user.password, salt, (err, hash)=> {
-                if(err) { console.log (err) } 
-                user.password = hash;
-                user.save();
-                res.status(200).json({
-                    message:'User successfully created', 
-                    user
+                    res.status(400).json({message: "user already exist"});
+            } else {
+                    const user =  new User (details);
+                    bcrypt.genSalt(10, (err, salt)=> {
+                    bcrypt.hash(user.password, salt, (err, hash)=> {
+                        if (err) { 
+                            console.log (err);
+                            res.status(400).json({message:err.message}) 
+                        } 
+                        user.password = hash;
+                        user.save();
+                        res.status(200).json({
+                            message:'User successfully created', 
+                            user
+                        });
+                    });
                 });
-            });
+            }
         });
     }
     catch(err) {
