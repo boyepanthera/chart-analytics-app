@@ -7,7 +7,7 @@ import cors from 'cors';
 import passportConfig from './config/passport';
 dotenv.config();
 const app = express (),
-    [port, url, ip] = [5003, process.env.DB_URL,  process.env.IP];
+    [port, url, ip] = [process.env.PORT, process.env.DB_URL,  process.env.IP];
     app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
