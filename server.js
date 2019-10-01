@@ -13,7 +13,8 @@ const app = express (),
         process.env.IP, 
         {useNewUrlParser:true, useFindAndModify:false, autoIndex:false, useCreateIndex:true}
     ];
-    app.use(cors());
+
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
